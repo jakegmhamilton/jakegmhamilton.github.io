@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Where the Dogs At?</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hover-box {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .hover-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    }
+
+    nav a.hover-box {
+      display: inline-block;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #fff; 
+      background-color: rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav a.hover-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .list-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .list-section ul li a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      padding: 0.5em;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+
+    .list-section ul li a:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <div class="overlay"></div>
+    <header>
+      <h1>Where the dogs at?</h1>
+      <nav>
+        <a href="derek wilson, sign up.html" class="hover-box">Sign Up</a>
+        <a href="vendor_submission_page_alex.html" class="hover-box">Get Listed</a>
+         <a href="WurstopediaHotDogIndex.html" class="hover-box">Glossary</a>
+      </nav>
+    </header>
+  </div>
+
+  <section class="intro">
+    <p>
+      Welcome to the #1 place to track down every hot dog cart in Toronto!
+    </p>
+  </section>
+  <div class="live-counter-wrapper">
+    <p id="cartCount" class="live-counter">Loading cart count...</p>
+  </div>
+
+  <section class="content">
+
+    <div class="section-wrapper">
+      <h2 class="section-title">Our Map</h2>
+      <a class="box-link" href="index.html">
+        <div class="map-section hover-box">
+          <img src="https://gisgeography.com/wp-content/uploads/2023/02/Toronto-Road-Map.jpg" alt="Map of Toronto" />
+        </div>
+      </a>
+    </div>
+
+    <div class="section-wrapper">
+      <h2 class="section-title">Top Dogs</h2>
+      <a class="box-link" href="WurstopediaHotDogIndex.html">
+        <div class="list-section hover-box">
+          <ul id="cartList">
+            <li><a href="https://maps.app.goo.gl/b58aeqE7owjYpNvq5" target="_blank">Mehran's Hot Dog Stand – 4.9</a></li>
+            <li><a href="https://maps.app.goo.gl/bZ7b9MK2nNoTNUM46" target="_blank">Bodega Burgers – 4.8</a></li>
+            <li><a href="https://maps.app.goo.gl/t8QA3tyQNYLBewmU6" target="_blank">MayDay Burger – 4.6</a></li>
+            <li><a href="https://maps.app.goo.gl/JJLyiGeuEsWQsyWL6" target="_blank">Chungchun Rice Hotdog Wellesley – 4.5</a></li>
+            <li><a href="https://maps.app.goo.gl/T1RVBNPtCu3L7Ko69" target="_blank">WVRST – 4.5</a></li>
+          </ul>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

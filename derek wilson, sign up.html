@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GET THE BEST OF WURSTPEDIA</title>
+<style>
+body{
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background: #fce7db;
+margin: 5;padding:0;
+cursor:url('https://cdn-icons-png.flaticon.com/32/4803/4803052.png') 16 16, auto;
+}
+
+.corner-image{
+position:fixed;
+top: 20px;
+right: 20p;
+width: 100p;
+height: auto;
+z-index: 1000;
+user-select: none
+pointer-events: none;
+}
+
+.container{
+max-width:520px;
+margin:80px auto 60px auto;padding:40px 40px 50px 40px;
+background-color:#fff1e6;
+border-radius:40px;
+box-shadow: 0 8px 24px rgba(0,0,0,0.12), inset 0 -4px 4px rgba(0,0,0,0.03)
+}
+
+h1 {
+text-align: center;color: #9b2915
+}
+
+p.subtitle{ text-align:center;font-style:italic;color:#b7522e;margin-bottom:25px}
+
+label{ font-weight:bold;display:block }
+
+input[type="text"],input[type="email"]{
+width:100%;padding:14px;margin-top:10px;margin-bottom:20px;
+border:none;border-radius:12px;background:#ffe0c9;
+}
+
+button{
+padding:14px;width:100%;
+border:none;
+background:#ff7a59;color:white;
+font-weight:bold;border-radius:12px;margin-top:15px
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>The Berst of Wurstpedia</h1>
+<p class="subtitle">Get the latest, the hotttest and doggest of hot dog news and offers straight to your inbox!</p>
+
+<form id="signupForm">
+<label>Name</label>
+<input type="text" id="a" placeholder="Your Name">
+<label>Email</label>
+<input type="email" id="b" placeholder="Your Email">
+<label>Confirm Email</label>
+<input type="email" id="c" placeholder="Confirm Email">
+<label>
+  <input type="checkbox" id="agree"> I agree to the <a href="#" id="showTerms">terms and conditions</a>
+</label>
+<button type="submit">Sign Up</button>
+</form>
+
+<p id="success" style="display:none;color:green;font-weight:bold;text-align:center;margin-top:20px">Thanks! You're on the list.</p>
+<p id="funfact" style="text-align:center;margin-top:30px;font-style:italic">Loading fun fact...</p>
+
+<img id="hotdogimg" style="display:block;margin:20px auto 0 auto;width:80px"
+src="https://cdn-icons-png.flaticon.com/512/2794/2794486.png">
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  facts = [
+  "Hot dogs were once called ‘dachshund sausages’.",
+  "Americans eat 20 billion hot dogs per year.",
+  "Chicago-style hot dogs are anti-ketchup.",
+  "There's a National Hot Dog and Sausage Council.",
+  "July is National Hot Dog Month."
+  ]
+
+  imgs = [
+  "https://cdn-icons-png.flaticon.com/512/2794/2794486.png",
+  "https://png.pngtree.com/png-clipart/20230326/original/pngtree-cute-hot-dog-fast-food-icon-illustration-png-image_9004692.png"
+  ]
+
+  idx = 0
+
+  setInterval(function(){
+    idx = (idx + 1)%imgs.length
+    document.getElementById("hotdogimg").src = imgs[idx]
+  }, 3000)
+
+  setInterval(function(){
+    let z = Math.floor(Math.random()*facts.length)
+    document.getElementById("funfact").innerText = facts[z]
+  }, 5000)
+
+  document.getElementById("signupForm").addEventListener("submit", function(e){
+    e.preventDefault()
+    var a=document.getElementById("a").value
+    var b=document.getElementById("b").value
+    var c=document.getElementById("c").value
+    var d=document.getElementById("agree").checked
+
+    if(a==""||b==""||c==""){alert("Fill in the form!");return}
+    if(b!=c){alert("Emails don't match");return}
+    if(d!=true){alert("Agree to continue");return}
+
+    document.getElementById("signupForm").style.display="none"
+    document.getElementById("success").style.display="block"
+  })
+
+  // === Terms Modal Logic ===
+  document.getElementById("showTerms").addEventListener("click", function(e){
+    e.preventDefault();
+    document.getElementById("termsModal").style.display = "block";
+  });
+
+  document.getElementById("closeTerms").addEventListener("click", function(){
+    document.getElementById("termsModal").style.display = "none";
+  });
+});
+</script>
+
+<!-- Terms Modal -->
+<div id="termsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); z-index:10000;">
+  <div style="background:white; width:80%; max-width:600px; margin:100px auto; padding:30px; border-radius:12px; position:relative;">
+    <h2>Terms and Conditions</h2>
+    <p>1. 
+We only collect your name and email address for sending the newsletter. That’s it. We don’t sell your data, and we won’t share it with third parties without your consent.
+
+
+.</p>
+    <p>2. 
+You can unsubscribe anytime using the link at the bottom of any email we send.
+</p>
+    <button id="closeTerms" style="margin-top:20px; padding:10px 20px; background:#ff7a59; color:white; border:none; border-radius:8px;">Close</button>
+  </div>
+</div>
+
+</body>
+</html>

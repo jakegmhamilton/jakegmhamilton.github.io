@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>First Webpage</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Hotdogs Near You</title>
+  <link rel="stylesheet" href="styles-finder.css" />
 </head>
 <body>
-	<img src="https://media.tenor.com/qo0-DG6XePMAAAAM/laptop-slam.gif" width="700"/>
-		</body>
-		</html>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#" class="active">Locator</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Find Hotdogs Near You</h1>
+    <div class="search-container">
+      <input type="text" id="locationInput" placeholder="Enter a location..." />
+      <button id="searchBtn">Search</button>
+      <button id="locateBtn">Use My Location</button>
+    </div>
+    <div id="map"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HotdogFinder</p>
+  </footer>
+
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG4RIuezTbHttyrhcGciY02cYVZQfzZFo&libraries=places&callback=initMap">
+  </script>
+  <script src="script-finder.js"></script>
+</body>
+</html>

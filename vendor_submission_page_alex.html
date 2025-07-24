@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Submission - Aligned Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fce7db;
+            color: #7a2f1f;
+        }
+        
+        .mockup-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff1e6;
+            padding: 40px;
+            border: 2px solid #b23a48;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(122, 47, 31, 0.2);
+            position: relative;
+        }
+        
+        .sketch-element {
+            border: 1px solid #b35434;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #fff1e6 0%, #f5d6cb 100%);
+            position: relative;
+            /* Removed all transforms and rotations */
+        }
+        
+        .title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            color: #7a2f1f;
+            text-shadow: 2px 2px 4px rgba(164, 71, 50, 0.3);
+        }
+        
+        .section-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #7a2f1f;
+            text-shadow: 1px 1px 2px rgba(164, 71, 50, 0.2);
+        }
+        
+        .input-box {
+            border: 1px solid #b35434;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+            font-family: inherit;
+            font-size: 16px;
+            background: linear-gradient(135deg, #8b3a20 0%, #b35434 100%);
+            color: #fff1e6;
+            box-sizing: border-box;
+            /* Removed transform */
+        }
+        
+        .input-box::placeholder {
+            color: #f5d6cb;
+            opacity: 0.8;
+        }
+        
+        .input-box:focus {
+            border-color: #b23a48;
+            outline: none;
+            box-shadow: 0 0 8px rgba(178, 58, 72, 0.4);
+        }
+        
+        .location-section {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+        
+        .location-left {
+            flex: 2;
+        }
+        
+        .map-placeholder {
+            width: 250px;
+            height: 150px;
+            border: 1px solid #b35434;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            background: linear-gradient(135deg, #f5d6cb 0%, #fff1e6 100%);
+            color: #7a2f1f;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 30px;
+            margin: 15px 0;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            color: #7a2f1f;
+        }
+        
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 1px solid #b35434;
+            border-radius: 3px;
+            position: relative;
+            cursor: pointer;
+            background: #fff1e6;
+        }
+        
+        .checkbox.checked {
+            background: #b23a48;
+            border-color: #b23a48;
+        }
+        
+        .checkbox.checked::after {
+            content: "✓";
+            position: absolute;
+            top: -1px;
+            left: 2px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff1e6;
+        }
+        
+        .condiments-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .condiment-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            padding: 8px;
+            border: 1px solid #b35434;
+            border-radius: 4px;
+            background: #fff1e6;
+            color: #7a2f1f;
+        }
+        
+        .condiment-item:hover {
+            background: #f5d6cb;
+        }
+        
+        .submit-button {
+            background: #b23a48;
+            color: #fff1e6;
+            border: none;
+            border-radius: 6px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 30px auto;
+            display: block;
+            font-family: inherit;
+            transition: background-color 0.3s;
+            text-shadow: 1px 1px 2px rgba(164, 71, 50, 0.3);
+        }
+        
+        .submit-button:hover {
+            background: #8b3a20;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(122, 47, 31, 0.6);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #fff1e6 0%, #f5d6cb 100%);
+            margin: 15% auto;
+            padding: 30px;
+            border: 2px solid #b23a48;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(122, 47, 31, 0.4);
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #7a2f1f;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(164, 71, 50, 0.3);
+        }
+        
+        .modal-message {
+            font-size: 18px;
+            color: #7a2f1f;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        .modal-button {
+            background: #b23a48;
+            color: #fff1e6;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background-color 0.3s;
+            text-shadow: 1px 1px 2px rgba(164, 71, 50, 0.3);
+        }
+        
+        .modal-button:hover {
+            background: #8b3a20;
+        }
+    </style>
+</head>
+<body>
+    <div class="mockup-container">
+        <div class="title">VENDOR SUBMISSION PAGE</div>
+        
+        <div class="sketch-element">
+            <div class="section-label">Vendor Name:</div>
+            <input type="text" class="input-box" placeholder="Enter vendor name here...">
+        </div>
+        
+        <div class="sketch-element">
+            <div class="section-label">Location Details:</div>
+            <div class="location-section">
+                <div class="location-left">
+                    <div style="margin-bottom: 10px;">
+                        <strong>Address:</strong>
+                        <input type="text" class="input-box" placeholder="Street address...">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <strong>Map Coordinates:</strong>
+                        <input type="text" class="input-box" id="coordinates" placeholder="Any Google Maps format (e.g., 43°39'28.7&quot;N 79°22'43.5&quot;W)" oninput="updateMap()">
+                    </div>
+                </div>
+                <div class="map-placeholder" id="mapContainer">
+                    <iframe id="mapFrame" style="display: none; width: 100%; height: 100%; border: 0; border-radius: 5px;" loading="lazy"></iframe>
+                    <div id="mapPlaceholder" style="text-align: center;">
+                        📍 MAP<br>PREVIEW<br><small>Enter coordinates to view</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sketch-element">
+            <div class="section-label">Dietary Options:</div>
+            <div class="checkbox-group">
+                <div class="checkbox-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Halal</span>
+                </div>
+                <div class="checkbox-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Kosher</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sketch-element">
+            <div class="section-label">Special Condiments Available:</div>
+            <div class="condiments-grid">
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Spicy Ketchup</span>
+                </div>
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Mayo</span>
+                </div>
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Corn Relish</span>
+                </div>
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Bacon Bits</span>
+                </div>
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Fried Onion</span>
+                </div>
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Spicy BBQ</span>
+                </div>
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Sauerkraut</span>
+                </div>
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Tomatoes</span>
+                </div>
+                <div class="condiment-item">
+                    <div class="checkbox" onclick="toggleCheck(this)"></div>
+                    <span>Cucumbers</span>
+                </div>
+            </div>
+        </div>
+        
+        <button class="submit-button" onclick="submitForm()">SUBMIT VENDOR INFO</button>
+    </div>
+    
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">✅ Success!</div>
+            <div class="modal-message">
+                Thank you for your vendor submission!<br>
+                Your information has been received and will be reviewed shortly.
+            </div>
+            <button class="modal-button" onclick="resetForm()">OK</button>
+        </div>
+    </div>
+    
+    <script>
+        function toggleCheck(element) {
+            element.classList.toggle('checked');
+        }
+        
+        function parseDMS(dmsString) {
+            // Parse degrees, minutes, seconds format: 43°39'28.7"N 79°22'43.5"W
+            const dmsPattern = /(\d+)°(\d+)'([\d.]+)"([NSEW])/g;
+            const matches = [...dmsString.matchAll(dmsPattern)];
+            
+            if (matches.length !== 2) return null;
+            
+            let lat = 0, lng = 0;
+            
+            matches.forEach(match => {
+                const degrees = parseInt(match[1]);
+                const minutes = parseInt(match[2]);
+                const seconds = parseFloat(match[3]);
+                const direction = match[4];
+                
+                let decimal = degrees + minutes/60 + seconds/3600;
+                
+                if (direction === 'S' || direction === 'W') {
+                    decimal = -decimal;
+                }
+                
+                if (direction === 'N' || direction === 'S') {
+                    lat = decimal;
+                } else {
+                    lng = decimal;
+                }
+            });
+            
+            return { lat, lng };
+        }
+
+        function updateMap() {
+            const coordinatesInput = document.getElementById('coordinates');
+            const mapFrame = document.getElementById('mapFrame');
+            const mapPlaceholder = document.getElementById('mapPlaceholder');
+            
+            const coordinates = coordinatesInput.value.trim();
+            
+            if (coordinates === '') {
+                // Empty input, show default placeholder
+                mapFrame.style.display = 'none';
+                mapPlaceholder.style.display = 'block';
+                mapPlaceholder.innerHTML = '📍 MAP<br>PREVIEW<br><small>Enter coordinates to view</small>';
+                return;
+            }
+            
+            let lat, lng;
+            let matchFound = false;
+            
+            // First try to parse DMS format (degrees, minutes, seconds)
+            const dmsResult = parseDMS(coordinates);
+            if (dmsResult) {
+                lat = dmsResult.lat;
+                lng = dmsResult.lng;
+                matchFound = true;
+            } else {
+                // Fall back to other coordinate formats
+                const patterns = [
+                    // Standard decimal format: 40.7128, -74.0060
+                    /^(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)$/,
+                    // With parentheses: (40.7128, -74.0060)
+                    /^\((-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\)$/,
+                    // With spaces and degree symbols: 40.7128° N, 74.0060° W (simplified)
+                    /^(-?\d+\.?\d*)°?\s*[NS]?\s*,?\s*(-?\d+\.?\d*)°?\s*[EW]?$/i,
+                    // Google Maps share format: 40.7128,-74.0060
+                    /^(-?\d+\.?\d*),(-?\d+\.?\d*)$/
+                ];
+                
+                // Try each pattern
+                for (let pattern of patterns) {
+                    const match = coordinates.match(pattern);
+                    if (match) {
+                        lat = parseFloat(match[1]);
+                        lng = parseFloat(match[2]);
+                        matchFound = true;
+                        break;
+                    }
+                }
+                
+                // Also handle Google Maps URLs (extract coordinates from URL)
+                if (!matchFound) {
+                    const urlPattern = /@(-?\d+\.?\d*),(-?\d+\.?\d*)/;
+                    const urlMatch = coordinates.match(urlPattern);
+                    if (urlMatch) {
+                        lat = parseFloat(urlMatch[1]);
+                        lng = parseFloat(urlMatch[2]);
+                        matchFound = true;
+                    }
+                }
+            }
+            
+            if (matchFound) {
+                // Check if coordinates are valid ranges
+                if (lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180) {
+                    // Create OpenStreetMap embed
+                    const mapUrl = `https://www.openstreetmap.org/export/embed.html?bbox=${lng-0.01},${lat-0.01},${lng+0.01},${lat+0.01}&layer=mapnik&marker=${lat},${lng}`;
+                    
+                    mapFrame.src = mapUrl;
+                    mapFrame.style.display = 'block';
+                    mapPlaceholder.style.display = 'none';
+                    
+                    // Update the input to show clean decimal format
+                    coordinatesInput.value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+                } else {
+                    // Invalid coordinate ranges
+                    mapFrame.style.display = 'none';
+                    mapPlaceholder.style.display = 'block';
+                    mapPlaceholder.innerHTML = '📍 MAP<br>PREVIEW<br><small style="color: red;">Invalid coordinates<br>Lat: -90 to 90<br>Lng: -180 to 180</small>';
+                }
+            } else {
+                // Invalid format
+                mapFrame.style.display = 'none';
+                mapPlaceholder.style.display = 'block';
+                mapPlaceholder.innerHTML = '📍 MAP<br>PREVIEW<br><small style="color: red;">Invalid format<br>Try: 43°39\'28.7"N 79°22\'43.5"W</small>';
+            }
+        }
+        
+        function submitForm() {
+            // Show the success modal
+            document.getElementById('successModal').style.display = 'block';
+        }
+        
+        function resetForm() {
+            // Hide the modal
+            document.getElementById('successModal').style.display = 'none';
+            
+            // Reset all form inputs
+            document.querySelectorAll('.input-box').forEach(input => {
+                input.value = '';
+            });
+            
+            // Reset all checkboxes
+            document.querySelectorAll('.checkbox').forEach(checkbox => {
+                checkbox.classList.remove('checked');
+            });
+            
+            // Reset map preview
+            const mapFrame = document.getElementById('mapFrame');
+            const mapPlaceholder = document.getElementById('mapPlaceholder');
+            mapFrame.style.display = 'none';
+            mapPlaceholder.style.display = 'block';
+            mapPlaceholder.innerHTML = '📍 MAP<br>PREVIEW<br><small>Enter coordinates to view</small>';
+        }
+    </script>
+</body>
+</html>

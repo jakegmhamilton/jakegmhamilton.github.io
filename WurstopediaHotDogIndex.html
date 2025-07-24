@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styleIndex.css">
+  <title>Wurstopedia - Hot Dog Index</title>
+
+  <header>
+    <div class="search-container">
+      <a href="#default" class="logo"></a>
+      <a class="active" href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#Locator">Locator</a>
+      <a href="#Contact">Contact</a>
+
+    </div>
+  </div>
+</header>
+
+</head>
+
+<body>
+  <div class="category-grid">
+
+    <div class="category">
+      <h2 onclick="toggleCategory(this)">Buns</h2>
+      <div class="content">
+        <table>
+          <tr><th>Type</th><th>Description</th></tr>
+          <tr><td>Standard White</td><td>Classic fluffy white bread hot dog bun.</td><td><img src="Bun-RegularWhite.png"></td></tr>
+          <tr><td>Brioche</td><td>Rich, buttery, and slightly sweet bun.</td><td> <img src="Bun-Brioche.png"></td></tr>
+          <tr><td>Pretzel</td><td>Chewy and salty with a glossy brown crust.</td><td> <img src="Bun-Pretzel.png"></td></tr>
+          <tr><td>Whole Wheat</td><td>Healthier option with more fiber and a nutty taste.</td><td> <img src="Bun-WholeWheat.png"></td></tr>
+          <tr><td>Lettuce Wrap</td><td>Low-carb alternative using crisp lettuce leaves.</td><td> <img src="Bun-Lettuce.png"></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2 onclick="toggleCategory(this)">Sausages</h2>
+      <div class="content">
+        <table>
+          <tr><th>Type</th><th>Description</th></tr>
+          <tr><td>Beef</td><td>Classic all-beef hot dog, juicy and flavorful.</td><td><img src="Dogs-Beef.png"></td></tr>
+          <tr><td>Pork</td><td>Traditional German-style frankfurters made from pork.</td><td><img src="Dogs-Pork.png"></td></tr>
+          <tr><td>Chicken</td><td>Leaner alternative with mild flavor.</td><td><img src="Dogs-Chicken.png"></td></tr>
+          <tr><td>Veggie</td><td>Plant-based, suitable for vegetarians and vegans.</td><td><img src="Dogs-Veggie.png"></td></tr>
+          <tr><td>Bratwurst</td><td>Hearty, coarse-ground sausage often grilled.</td><td><img src="Dogs-Bratwurst.png"></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="category">
+      <h2 onclick="toggleCategory(this)">Toppings & Condiments</h2>
+      <div class="content">
+        <table>
+          <tr> <th>Toppings & Condiments</th><th>Description</th></tr>
+          <tr> <td>Ketchup</td><td>Sweet and tangy tomato-based sauce.</td><td><img src="Toppings-Ketchup.png"></td></tr>
+          <tr> <td>Mustard</td><td>Classic yellow, Dijon, or spicy brown.</td><td><img src="Toppings-Mustard.png"></td></tr>
+          <tr> <td>Relish</td><td>Sweet chopped pickles for a bright kick.</td><td><img src="Toppings-Relish.png"></td></tr>
+          <tr> <td>Grilled Onions</td><td>Sweet and caramelized for depth of flavor.</td><td><img src="Toppings-Onions.png"></td></tr>
+          <tr> <td>Sauerkraut</td><td>Fermented cabbage, a German classic.</td><td><img src="Toppings-Sauerkraut.png"></td></tr>
+          <tr> <td>Chili</td><td>Hearty and spicy meat topping.</td><td><img src="Toppings-Chili.png"></td></tr>
+          <tr> <td>Pickles</td><td>Sliced dill or bread-and-butter pickles for crunch.</td><td><img src="Toppings-Pickles.png"></td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="category">
+      <h2 onclick="toggleCategory(this)">Special Dogs</h2>
+      <div class="content">
+        <table>
+          <tr><th>Name</th><th>Description</th></tr>
+          <tr><td>Chicago Dog</td><td>beef dog with mustard, relish, onion, tomato, pickle.</td><td><img src="Special-Chicago.png"></td></tr>
+          <tr><td>New York Dog</td><td>Served with sauerkraut and brown mustard.</td><td><img src="Special-New York.png"></td></tr>
+          <tr><td>Korean Corn Dog</td><td>Deep fried with toppings directly in the batter.</td><td><img src="Special-Korean.png"></td></tr>
+          <tr><td>Sonoran Dog</td><td>Bacon-wrapped with beans, jalapeños, tomato, mayo, and mustard.</td><td><img src="Special-Sonoran.png"></td></tr>
+          <tr><td>Pogo</td><td>Old-reliable of the Special Dogs!</td><td><img src="Special-Pogo.png"></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleCategory(header) 
+    {
+      const content = header.nextElementSibling;
+      content.classList.toggle("open");
+    }
+  </script>
+</body>
+</html>

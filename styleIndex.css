@@ -1,0 +1,128 @@
+/* Global Colors */
+body {
+    font-family: Segoe UI;
+    background: #fce7db;
+    color: #f5d6cb;
+    margin: 0;
+    padding: 0;
+  cursor: url('https://cdn-icons-png.flaticon.com/32/4803/4803052.png') 16 16, auto;
+}
+
+/* Search + Buttons */
+header {
+  background-color: #b23a48; /* Navbar background */
+  font-family: Tahoma;
+  font-weight: bold;
+  color: #f5d6cb;
+  padding: 1em;
+}
+
+.active { 
+  color: #f5d6cb;
+  }
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #f5d6cb;
+  text-decoration: none;
+  margin: 0 1em;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+color: #f5d6cb;
+}
+
+nav ul li a.active {
+  color: #f5d6cb;
+  text-decoration: underline;
+}
+
+h1 {
+  text-align: center;
+  margin: 1em 0;
+  text-shadow: 2px 2px 0 #a44732; 
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  color: #f5d6cb;
+  gap: 1em;
+  margin: 1em auto;
+}
+
+/* Category Dropdowns */
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  text-shadow: #a44732;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.category {
+  width: 800px;
+  color: #7a2f1f;
+  background-color: #fff1e6;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+img {
+  width: 170px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.category h2 {
+  margin: 0;
+  padding: 15px;
+  background: radial-gradient(#8b3a20, #b35434); 
+  color: #f5d6cb;
+  text-shadow: #a44732;
+  cursor: pointer;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.content {
+  max-height: 0; /* Collapsed state */
+  overflow: hidden;
+  transition: ease-in-out 0.9s;
+}
+
+.content.open {
+  max-height: 1000px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-spacing: 70px, 0px; /* Adjust this value for desired space between cells */
+}
+
+td, th {
+  padding: 5px; 
+  text-align: center;
+}
+
+
+/*notes*
+#fce7db   // Body background
+#fff1e6   // Container background
+#7a2f1f   // Primary text color (headings, labels)
+#b23a48   // Button background & accent links
+#8b3a20   // Input background gradient start
+#b35434   // Input background gradient end
+#f5d6cb   // Placeholder text
+#a44732   // Text shadow for headings and messages
+Segoe UI, Tahoma, Geneva, Verdana, sans-serif
